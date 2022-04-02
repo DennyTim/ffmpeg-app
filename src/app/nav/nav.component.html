@@ -14,7 +14,7 @@
       <!-- Primary Navigation -->
       <ul class="flex flex-row mt-1">
         <!-- Navigation Links -->
-        <li>
+        <li *ngIf="!(auth.isAuthenticated$ | async); else authLinks">
           <a
             class="px-2"
             href="#"
@@ -26,21 +26,31 @@
         <li>
           <a
             class="px-2"
-            href="#"
-          >Manage</a>
-        </li>
-        <li>
-          <a
-            class="px-2"
-            href="#"
-          >Upload</a>
-        </li>
-        <li>
-          <a
-            class="px-2"
             href="about.html"
           >About</a>
         </li>
+        <ng-template #authLinks>
+          <li>
+            <a
+              class="px-2"
+              href="#"
+            >Manage</a>
+          </li>
+          <li>
+            <a
+              class="px-2"
+              href="#"
+            >Upload</a>
+          </li>
+          <li>
+            <a
+              class="px-2"
+              (click)="logout($event)"
+            >
+              Logout
+            </a>
+          </li>
+        </ng-template>
       </ul>
     </div>
   </nav>
