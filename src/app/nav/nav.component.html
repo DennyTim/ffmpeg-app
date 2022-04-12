@@ -7,7 +7,7 @@
     <!-- App Name -->
     <a
       class="text-3xl text-indigo-400 font-bold uppercase mr-4"
-      href="index.html"
+      routerLink="/"
     >Clips</a>
 
     <div class="flex flex-grow items-center">
@@ -23,29 +23,36 @@
             Login / Register
           </a>
         </li>
-        <li>
+        <li routerLinkActive="text-indigo-400">
           <a
             class="px-2"
-            href="about.html"
+            routerLink="/about"
+            routerLinkActive="text-indigo-400"
+            [routerLinkActiveOptions]="{ exact: true }"
           >About</a>
         </li>
         <ng-template #authLinks>
           <li>
             <a
               class="px-2"
-              href="#"
+              routerLink="/manage"
+              routerLinkActive="text-indigo-400"
+              [routerLinkActiveOptions]="{ exact: true }"
+              [queryParams]="{ sort: '1' }"
             >Manage</a>
           </li>
           <li>
             <a
               class="px-2"
-              href="#"
+              routerLink="/upload"
+              routerLinkActive="text-indigo-400"
+              [routerLinkActiveOptions]="{ exact: true }"
             >Upload</a>
           </li>
           <li>
             <a
               class="px-2"
-              (click)="logout($event)"
+              (click)="auth.logout($event)"
             >
               Logout
             </a>
